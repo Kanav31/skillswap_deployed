@@ -30,14 +30,14 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 const matchingRoute = require('./routes/matchingAlgorithm');
 const { log } = require('async');
 
-// // CORS Configuration
-// const corsOptions = {
-//   origin: ['http://localhost:3000', 'https://skillswap-deployed-git-main-kanav31s-projects.vercel.app/'],
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   exposedHeaders: ['Content-Type', 'Authorization']
-// };
+// CORS Configuration
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://skillswap-deployed-q7qqmharv-kanav31s-projects.vercel.app/'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  exposedHeaders: ['Content-Type', 'Authorization']
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(express.static('./public'));
