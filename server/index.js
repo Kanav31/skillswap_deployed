@@ -30,14 +30,14 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 const matchingRoute = require('./routes/matchingAlgorithm');
 const { log } = require('async');
 
-// CORS Configuration
-const corsOptions = {
-  origin: ['http://localhost:3000', 'https://skillswap-nine.vercel.app/'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  exposedHeaders: ['Content-Type', 'Authorization']
-};
+// // CORS Configuration
+// const corsOptions = {
+//   origin: ['http://localhost:3000', 'https://skillswap-deployed-git-main-kanav31s-projects.vercel.app/'],
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   exposedHeaders: ['Content-Type', 'Authorization']
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Middleware
 app.use(express.static('./public'));
@@ -70,7 +70,6 @@ const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: {
     origin: (origin, callback) => {
-      // Combine production and dev origins
       const allowedOrigins = [...prodOrigins, ...devOrigin];
       if (allowedOrigins.includes(origin)) {
         console.log(origin, allowedOrigins);
