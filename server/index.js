@@ -72,7 +72,7 @@ const io = require('socket.io')(server, {
     origin: (origin, callback) => {
       console.log("hiii");
 
-      const allowedOrigins = [...prodOrigins, ...devOrigin];
+      // const allowedOrigins = [...prodOrigins, ...devOrigin];
       if (allowedOrigins.includes(origin)) {
         console.log(origin, allowedOrigins);
         callback(null, true);
