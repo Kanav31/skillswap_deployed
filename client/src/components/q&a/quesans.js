@@ -17,7 +17,7 @@ function QuesAns() {
     e.preventDefault(); // Prevent the default form submission behavior
 
     try {
-      const response = await fetch("http://localhost:8000/api/v1/Q&A/questions", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/Q&A/questions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ function QuesAns() {
 
   const getAllQuestionsAndAnswers = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/v1/Q&A/questions", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/Q&A/questions`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${Token}`, // Replace with your actual access token
@@ -77,7 +77,7 @@ function QuesAns() {
     console.log(questionId);
     console.log(answerContentMap[questionId]);
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/Q&A/questions/${questionId}/answers`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL} / api / v1 / Q & A / questions / ${questionId} / answers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -140,12 +140,12 @@ function QuesAns() {
             <h3>"question by"{qaItem.user.name}</h3>
             <h3>{qaItem.title}</h3>
             <p>{qaItem.content}</p>
-            <label className="qlabel" htmlFor={`answer-${qaItem._id}`}>
+            <label className="qlabel" htmlFor={`answer - ${qaItem._id}`}>
               Answer:
             </label>
             <input
               className="qansinput"
-              id={`answer-${qaItem._id}`}
+              id={`answer - ${qaItem._id}`}
               value={answerContentMap[qaItem._id]}
               onChange={(e) =>
                 setAnswerContentMap((prevMap) => ({

@@ -33,7 +33,7 @@ function Allprofiles() {
 
   const handleMatching = () => {
     console.log({ token });
-    fetch("http://localhost:8000/api/v1/matching/match", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/matching/match`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -63,7 +63,7 @@ function Allprofiles() {
     console.log(userId);
     console.log(profileId);
     // Call the /sendRequest endpoint
-    fetch("http://localhost:8000/api/v1/chat-request/sendRequest", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/chat-request/sendRequest`, {
       method: "POST",
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -89,7 +89,7 @@ function Allprofiles() {
       });
 
     // Call the /express-interest endpoint
-    fetch("http://localhost:8000/api/v1/send/express-interest", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/send/express-interest`, {
       method: "POST",
       headers: {
         'Authorization': `Bearer ${token}`,

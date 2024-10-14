@@ -36,7 +36,7 @@ function Login() {
     // console.log('Form data:', formData);  i did breach ke liye
 
     // Add further login logic here
-    fetch("http://localhost:8000/api/v1/auth/login", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/auth/login`, {
       method: "POST",
       crossDomain: true,
       headers: {

@@ -10,7 +10,7 @@ import message from "./img/message-more.jpg"
 import Navbar from '../navigation/NavigationBar'
 import nochatbg2 from "./nochatbg2.png"
 var socket, selectedChatCompare;
-const ENDPOINT = "http://localhost:8000";
+const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
 
 function ConfirmedMatches() {
 
@@ -52,7 +52,7 @@ function ConfirmedMatches() {
   const mymatches = async () => {
     try {
       // Make an HTTP GET request to your server
-      const response = await fetch('http://localhost:8000/api/v1/chat-request/getAllAcceptedRequest', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/chat-request/getAllAcceptedRequest`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -84,7 +84,7 @@ function ConfirmedMatches() {
   const fetchAllMessages = async (chatId) => {
     try {
       // if (socket) { // Check if socket is defined
-      const response = await fetch(`http://localhost:8000/api/v1/message/all-message/${chatId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/message/all-message/${chatId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -141,7 +141,7 @@ function ConfirmedMatches() {
 
   const accessChat = async (userId) => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/chat/access-chats', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/chat/access-chats`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -195,7 +195,7 @@ function ConfirmedMatches() {
     setMessageContent("");
     socket.emit("stop typing", selectedChat._id);
     try {
-      const response = await fetch('http://localhost:8000/api/v1/message/send-message', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/message/send-message`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${Token}`,

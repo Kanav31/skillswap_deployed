@@ -25,7 +25,7 @@ function Navbar() {
   const getrequests = async () => {
     try {
       // Make an HTTP GET request to your server
-      const response = await fetch('http://localhost:8000/api/v1/chat-request/getAllRequest', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/chat-request/getAllRequest`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -48,7 +48,7 @@ function Navbar() {
   const acceptRequest = async (requestId) => {
     try {
       // Make an HTTP PATCH request to your server to accept the request
-      const response = await fetch(`http://localhost:8000/api/v1/chat-request/acceptRequest/${requestId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL} / api / v1 / chat - request / acceptRequest / ${requestId}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -71,7 +71,7 @@ function Navbar() {
   const rejectRequest = async (requestId) => {
     try {
       // Make an HTTP PATCH request to your server to accept the request
-      const response = await fetch(`http://localhost:8000/api/v1/chat-request/rejectRequest/${requestId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL} / api / v1 / chat - request / rejectRequest / ${requestId}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -94,10 +94,10 @@ function Navbar() {
   // const logout = async () => {
   //   try {
   //     // Make an HTTP POST request to your server to log out
-  //     const response = await fetch('http://localhost:8000/api/v1/auth/logout', {
+  //     const response = await fetch(`${ process.env.REACT_APP_API_URL } / api / v1 / auth / logout`, {
   //       method: 'POST',
   //       headers: {
-  //         'Authorization': `Bearer ${Token}`,
+  //         'Authorization': `Bearer ${ Token }`,
   //         'Content-Type': 'application/json',
   //       },
   //     });
@@ -203,7 +203,7 @@ function Navbar() {
           </ul>
         </div>
       </div>
-      <div className={`sidebar-overlay ${isOpen === true ? 'active' : ''}`} onClick={ToggleSidebar}></div>
+      <div className={`sidebar - overlay ${isOpen === true ? 'active' : ''} `} onClick={ToggleSidebar}></div>
 
 
     </div>
@@ -233,7 +233,7 @@ function Navbar() {
 
     //   </div>
 
-    //   <div className={`sidebar ${isOpen === true ? 'active' : ''}`}>
+    //   <div className={`sidebar ${ isOpen === true ? 'active' : '' } `}>
     //                   <div className="sd-header">
     //                       <h4 className="mb-0">Pending Requests</h4>
     //                       <div className="btn btn-primary" onClick={ToggleSidebar}><i className="fa fa-times"></i></div>
@@ -274,7 +274,7 @@ function Navbar() {
     //                       </ul>
     //                   </div>
     //               </div>
-    //               <div className={`sidebar-overlay ${isOpen === true ? 'active' : ''}`} onClick={ToggleSidebar}></div>
+    //               <div className={`sidebar - overlay ${ isOpen === true ? 'active' : '' } `} onClick={ToggleSidebar}></div>
     // </div>
   )
 }

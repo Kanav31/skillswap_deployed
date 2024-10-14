@@ -38,7 +38,7 @@ function Todolist() {
     try {
       // Make an HTTP GET request to your server
       const response = await fetch(
-        "http://localhost:8000/api/v1/chat-request/getAllAcceptedRequest",
+        `${process.env.REACT_APP_API_URL}/api/v1/chat-request/getAllAcceptedRequest`,
         {
           method: "GET",
           headers: {
@@ -97,7 +97,7 @@ function Todolist() {
     console.log(tasks);
     try {
       const response = await fetch(
-        `http://localhost:8000/api/v1/tasklist-related/task-lists/${selectedUserId}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/tasklist-related/task-lists/${selectedUserId}`,
         {
           method: "POST",
           headers: {
@@ -163,7 +163,7 @@ function Todolist() {
       setbutton("get");
       try {
         const response = await fetch(
-          `http://localhost:8000/api/v1/tasklist-related/task-lists/matched-user/${selectedUserId}`,
+          `${process.env.REACT_APP_API_URL}/api/v1/tasklist-related/task-lists/matched-user/${selectedUserId}`,
           {
             method: "GET",
             headers: {
@@ -196,7 +196,7 @@ function Todolist() {
       try {
         // Update the server to mark the task as complete
         const response = await fetch(
-          `http://localhost:8000/api/v1/tasklist-related/task-lists/complete-task/${taskId}`,
+          `${process.env.REACT_APP_API_URL}/api/v1/tasklist-related/task-lists/complete-task/${taskId}`,
           {
             method: "PUT",
             headers: {
@@ -213,7 +213,7 @@ function Todolist() {
 
         // Fetch the updated task list from the server
         const updatedTaskListResponse = await fetch(
-          `http://localhost:8000/api/v1/tasklist-related/task-lists/matched-user/${selectedUserId}`,
+          `${process.env.REACT_APP_API_URL}/api/v1/tasklist-related/task-lists/matched-user/${selectedUserId}`,
           {
             method: "GET",
             headers: {

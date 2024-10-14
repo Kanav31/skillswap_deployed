@@ -69,7 +69,7 @@ function Userinfo() {
 
   const fetchUserProfile = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/profile/${userId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/profile/${userId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -96,7 +96,7 @@ function Userinfo() {
   const getrequests = async () => {
     try {
       // Make an HTTP GET request to your server
-      const response = await fetch('http://localhost:8000/api/v1/chat-request/getAllRequest', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/chat-request/getAllRequest`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${Token}`,
@@ -214,7 +214,7 @@ function Userinfo() {
           pic: image,
         };
         // Make an HTTP POST request to your server
-        const response = await fetch('http://localhost:8000/api/v1/profile', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/profile`, {
 
           method: 'POST',
           headers: {

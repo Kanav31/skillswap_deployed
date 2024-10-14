@@ -33,7 +33,7 @@ function Signup() {
     console.log('Form data:', signformData);
 
     // Add further login logic here
-    fetch("http://localhost:8000/api/v1/auth/register", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/auth/register`, {
       method: "POST",
       crossDomain: true,
       headers: {
