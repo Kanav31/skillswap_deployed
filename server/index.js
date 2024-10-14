@@ -63,6 +63,9 @@ const server = app.listen(port, () =>
   console.log(`Server is listening on port ${port}...`)
 );
 
+const prodOrigins = [process.env.ORIGIN_1, process.env.ORIGIN_2]
+const devOrigin = ['http://localhost:3000',]
+const allowedOrigins = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigin
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: {
@@ -76,7 +79,7 @@ const io = require('socket.io')(server, {
         callback(new Error('Not allowed by CORS'));
       }
     },
-    credentials: true, // Fix typo, should be "credentials"
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   },
 });
