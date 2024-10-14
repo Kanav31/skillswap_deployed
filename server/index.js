@@ -70,6 +70,8 @@ const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: {
     origin: (origin, callback) => {
+      console.log("hiii");
+
       const allowedOrigins = [...prodOrigins, ...devOrigin];
       if (allowedOrigins.includes(origin)) {
         console.log(origin, allowedOrigins);
