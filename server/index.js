@@ -63,27 +63,37 @@ const server = app.listen(port, () =>
   console.log(`Server is listening on port ${port}...`)
 );
 
-const prodOrigins = ['*']
-const devOrigin = ['*']
-const allowedOrigins = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigin
+// const prodOrigins = '*';
+// const devOrigin = '*';
+// const allowedOrigins = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigin
+// const io = require('socket.io')(server, {
+//   pingTimeout: 60000,
+//   cors: {
+//     origin: (origin, callback) => {
+//       console.log("hiii");
+
+//       const allowedOrigins = [...prodOrigins, ...devOrigin];
+//       if (allowedOrigins.includes(origin)) {
+//         console.log(origin, allowedOrigins);
+//         callback(null, true);
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   },
+// });
+
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: {
-    origin: (origin, callback) => {
-      console.log("hiii");
-
-      const allowedOrigins = [...prodOrigins, ...devOrigin];
-      if (allowedOrigins.includes(origin)) {
-        console.log(origin, allowedOrigins);
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: '*',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  },
+  }
 });
+
 
 io.on('connection', (socket) => {
   console.log('Connected to socket.io');
