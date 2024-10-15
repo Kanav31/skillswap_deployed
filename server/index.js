@@ -32,7 +32,7 @@ const { log } = require('async');
 
 // CORS Configuration
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://skillswap-deployed-q7qqmharv-kanav31s-projects.vercel.app/'],
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   exposedHeaders: ['Content-Type', 'Authorization']
 };
@@ -72,7 +72,7 @@ const io = require('socket.io')(server, {
     origin: (origin, callback) => {
       console.log("hiii");
 
-      // const allowedOrigins = [...prodOrigins, ...devOrigin];
+      const allowedOrigins = [...prodOrigins, ...devOrigin];
       if (allowedOrigins.includes(origin)) {
         console.log(origin, allowedOrigins);
         callback(null, true);
