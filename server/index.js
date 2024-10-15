@@ -63,8 +63,8 @@ const server = app.listen(port, () =>
   console.log(`Server is listening on port ${port}...`)
 );
 
-const prodOrigins = [process.env.ORIGIN_1, process.env.ORIGIN_2]
-const devOrigin = ['http://localhost:3000',]
+const prodOrigins = ['*']
+const devOrigin = ['*']
 const allowedOrigins = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigin
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
